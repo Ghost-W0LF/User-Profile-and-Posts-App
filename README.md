@@ -40,7 +40,7 @@ Before you begin, ensure you have the following installed:
 git clone https://github.com/your-username/flutter-user-profile-posts.git
 cd flutter-user-profile-posts
 
-iOS Configuration (if running on iOS)
+iOS Configuration 
 Add the following keys to your Info.plist file located in ios/Runner/Info.plist:
 <key>NSPhotoLibraryUsageDescription</key>
 <string>This app needs access to your photo library to upload profile pictures.</string>
