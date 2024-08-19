@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,8 +11,6 @@ class User {
     required this.email,
     required this.profilePictureUrl,
   });
-
-  // Method to convert to/from Map for local storage could be added here
 }
 
 class UserProvider extends ChangeNotifier {
@@ -36,16 +33,16 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateProfilePicture(String imagePath) async {
-    userDetail[0].profilePictureUrl = imagePath;
-    await _saveProfilePicture(imagePath);
-    notifyListeners();
-  }
-
   Future<void> _saveUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', userDetail[0].name);
     await prefs.setString('user_email', userDetail[0].email);
+  }
+
+  Future<void> updateProfilePicture(String imagePath) async {
+    userDetail[0].profilePictureUrl = imagePath;
+    await _saveProfilePicture(imagePath);
+    notifyListeners();
   }
 
   Future<void> _saveProfilePicture(String imagePath) async {
@@ -60,5 +57,11 @@ class UserProvider extends ChangeNotifier {
     userDetail[0].profilePictureUrl = prefs.getString('user_profile_picture') ??
         userDetail[0].profilePictureUrl;
     notifyListeners();
+  }
+
+  @override
+  void notifyListeners() {
+    // TODO: implement notifyListeners
+    super.notifyListeners();
   }
 }

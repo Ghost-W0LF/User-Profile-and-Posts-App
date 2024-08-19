@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:recruitment_assignment/models/post_model.dart';
-import 'package:recruitment_assignment/models/userModel.dart';
-import 'package:recruitment_assignment/screen/profilePage.dart';
 
-import 'package:recruitment_assignment/service/weatherService.dart';
+import 'package:recruitment_assignment/service/postService.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -25,7 +22,6 @@ class _PostPageState extends State<PostPage> {
 
   @override
   Widget build(BuildContext context) {
-    var userDetial = context.watch<UserProvider>().userDetail[0];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
@@ -46,6 +42,7 @@ class _PostPageState extends State<PostPage> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
+                    color: Colors.blueAccent.withOpacity(0.2),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
